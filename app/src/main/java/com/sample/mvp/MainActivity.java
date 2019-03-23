@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements MainView {
-    TextView hasil;
+    TextView hasil, mkeliling;
     EditText panjang, lebar;
     MainPresenterImp presenter;
 
@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         hasil = findViewById(R.id.TV_Hasil);
         panjang = findViewById(R.id.ET_Panjang);
         lebar = findViewById(R.id.ET_Lebar);
+        mkeliling = findViewById(R.id.TV_Hasil_keliling);
 
         initPresenter();
     }
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         Double lbr = Double.valueOf(lebar.getText().toString());
 
         presenter.hitung(pjg, lbr);
+        presenter.hitungKeliling(pjg, lbr);
     }
 
 
@@ -42,4 +44,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
     public void hasil(Double luas) {
         hasil.setText(luas.toString());
     }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void hasilKeliling(Double keliling) {
+        mkeliling.setText(keliling.toString());
+    }
+
 }
